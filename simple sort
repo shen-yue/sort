@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+void exchange(int *a, int *b){
+    *a = *a+*b;
+    *b = *a-*b;
+    *a = *a-*b;
+}
+
+void rant(int *L,int len){
+    int * pt=NULL;
+    for (int i=0; i<len; i++){
+        cout<<"i:"<<i;
+        pt = L+i;
+        for (int j=i+1;j<len;j++){
+            if (*(L+j)<*pt){
+                cout<<","<<"L+j"<<":L+"<<j;
+                cout<<","<<"*(L+j):"<<*(L+j)<<endl;
+                pt=L+j;
+            }
+        }
+        exchange(L+i,pt);
+        cout<<i<<","<<*(L+i)<<endl;
+    }
+}
+
+int main(){
+    int L[]={3,4,2,6,1,8,32,13,62};
+    int len=sizeof(L)/sizeof(int);
+    rant(L,len);
+//    for (int i=0;i<len;i++){
+//        cout<< *(L+i)<<endl;
+//    }
+    
+    return 0;
+    }
+    
